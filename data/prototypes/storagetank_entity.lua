@@ -2,6 +2,7 @@
 local myGlobal = require("__nco-LongStorageTanks__/lib/nco_data")
 local data_util = require("__nco-LongStorageTanks__/lib/data_util")
 local lib_storagetank = require("__nco-LongStorageTanks__/lib/lib_storagetank")
+local pipecoverspictures = _G.pipecoverspictures --just a fix for lua style check
 local tankSizeScaling = 40000
 -------------------------------------------------------------------------------------
 local function makestoragetank(unitSize)
@@ -78,7 +79,6 @@ local function makestoragetank(unitSize)
 		},
 		collision_box = {{-(storageTankSizeA/2-0.01), -(storageTankSizeB/2-0.01)}, {(storageTankSizeA/2-0.01),(storageTankSizeB/2-0.01)}},
 		selection_box = {{-(storageTankSizeA/2), -(storageTankSizeB/2)}, {(storageTankSizeA/2), (storageTankSizeB/2)}},
-		vehicle_impact_sound = {},
 		window_bounding_box = {{0, 0}, {0, 0}},
 		working_sound = util.table.deepcopy(data.raw["storage-tank"]["storage-tank"]["working_sound"]),
 		vehicle_impact_sound =	{ filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -91,7 +91,7 @@ local function makestoragetank(unitSize)
 		--===================================================================================
 	-- Sprites
 	--===================================================================================
-	
+
 	local mySpriteH = lib_storagetank.buildSpriteLayer(unitSize,"h")
 	local mySpriteV = lib_storagetank.buildSpriteLayer(unitSize,"v")
 	storageTankEnt.pictures.picture = {north={},south={},west={},east={}}
@@ -102,6 +102,7 @@ local function makestoragetank(unitSize)
 	--===================================================================================
 	-- FluidBox:Pipes
 	--===================================================================================
+	local pipeConnection
 	for i=0,(unitSize-1) do
 		for x=0,2 do
 			pipeConnection = { position = {data_util.round((-storageTankSizeA/2) + (i*7) + (2*x)) , data_util.round(storageTankSizeB/2) + 0.5}}

@@ -18,7 +18,7 @@ function lib_storagetank.getStorageTankData(unitSize,sizeScaling)
 			storageTankName = storageTankName,
 			gridSize = gridSize,
 			storageTankCapacity = storageTankCapacity,
-			storageTankHealth = tankHealth,
+			storageTankHealth = storageTankHealth,
 			sortOrder = sortOrder
 		}
 end
@@ -107,7 +107,7 @@ function lib_storagetank.buildSpriteLayer(unitSize,direction)
 	local entityData = lib_storagetank.getStorageTankData(unitSize,0,direction)
 	local layers = {}
 	local bgTint = {r = 0.1, g = 0.1, b = 0.1, a = 0.8}
-	
+
 	-------------------------------------------------------------------------------------
 	--left background
 	-------------------------------------------------------------------------------------
