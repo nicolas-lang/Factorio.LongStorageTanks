@@ -111,13 +111,13 @@ local function makestoragetank(unitSize)
 			table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
 		end
 	end
-	
+
 	--side connections
 	pipeConnection = { position = {-data_util.round(storageTankSizeA)/2-0.5 ,-data_util.round(storageTankSizeB)/4}}
 	table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
 	pipeConnection = { position = {data_util.round(storageTankSizeA)/2+0.5 , data_util.round(storageTankSizeB)/4}}
 	table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
-	
+
 	--===================================================================================
 	--Register storagetank
 	--===================================================================================
@@ -127,7 +127,7 @@ local function makestoragetank(unitSize)
 	storageTankLog.working_sound = nil
 	storageTankLog.fluid_box.pipe_covers = nil
 	log(storageTankEnt.name..":"..serpent.block( storageTankLog, {comment = false, numformat = '%1.8g' } ))
-	
+
 	data:extend({storageTankItm})
 	data:extend({storageTankEnt})
 	data:extend({storageTankRec})
