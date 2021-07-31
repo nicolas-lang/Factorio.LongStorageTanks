@@ -1,22 +1,18 @@
-# Factorio.ModTemplate
-Template for automated mod deployment using Github Actions when a tagged commit is pushed
+# Long Storage Tanks
+When playing Factorio with Logistic Train Network enabled, I never liked the micro management of balancing fluids for each tank in a train station. 
 
-## Inputs (Github secrets)
+This mod adds larger storage tanks (with configurable sizes) to simplify building better, simpler train stations.
+Tanks have enough connections on either side to allow 3 pumps per wagon
 
-### `factorio_user`
+**Note:** I would suggest to limit yourself to a size of 12 wagons at most for balancing reasons
 
-**Required** User that will be used to authenticate to the Factorio mod-portal.
-
-### `factorio_password`
-
-**Required** Password that will be used to authenticate to the Factorio mod-portal.
+#Contributing
+- Feel free to review and improve my code.
+- If you want to help improve the mod reach out to me or provide a pull-request
+- It is planned to cover non-english locales with crowdin, for now this means I will not be manually adding locales to this mod.
 
 ## Acknowledgements
 
-Actions based on:
-- [Roang-zero1 Actions](https://github.com/Roang-zero1)
+- [Github actions based on Roang-zero1 Actions](https://github.com/Roang-zero1)
+- [Logistic Train Network is a mod by Optera](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork)
 
-Which are  based on:
-- [Nexelas Mods](https://github.com/Nexela)
-- [GitHub Action to automatically publish to the Factorio mod portal](https://github.com/shanemadden/factorio-mod-portal-publish)
-- Shane Madden (Nymbia)
