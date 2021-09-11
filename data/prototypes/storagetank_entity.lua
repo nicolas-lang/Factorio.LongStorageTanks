@@ -126,7 +126,7 @@ local function makestoragetank(unitSize)
 	storageTankLog.circuit_connector_sprites = nil
 	storageTankLog.working_sound = nil
 	storageTankLog.fluid_box.pipe_covers = nil
-	log(storageTankEnt.name..":"..serpent.block( storageTankLog, {comment = false, numformat = '%1.8g' } ))
+	--log(storageTankEnt.name..":"..serpent.block( storageTankLog, {comment = false, numformat = '%1.8g' } ))
 
 	data:extend({storageTankItm})
 	data:extend({storageTankEnt})
