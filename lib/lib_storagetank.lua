@@ -9,7 +9,12 @@ function lib_storagetank.getStorageTankData(unitSize,sizeScaling)
 	local storageTankSizeNameAdvanced = string.format("%d-%d" ,unitSize,gridSize)
 	local storageTankName = string.format("%s-%s", storageTankNameBase, storageTankSizeName)
 	local sortOrder = string.format("a[%d-%s]", 0, storageTankSizeName)
-	local storageTankCapacity = math.min(unitSize * sizeScaling,1500000)
+
+	local storageTankCapacity = math.max(unitSize * sizeScaling, 1)
+	if settings.startup["st-limit-chest-size"].value then
+		storageTankCapacity = math.min(storageTankCapacity, 1500000)
+	end
+
 	local storageTankHealth = 500 + unitSize * 250
 	return {
 			storageTankNameBase = storageTankNameBase,

@@ -3,7 +3,7 @@ local myGlobal = require("__nco-LongStorageTanks__/lib/nco_data")
 local data_util = require("__nco-LongStorageTanks__/lib/data_util")
 local lib_storagetank = require("__nco-LongStorageTanks__/lib/lib_storagetank")
 local pipecoverspictures = _G.pipecoverspictures --just a fix for lua style check
-local tankSizeScaling = 40000
+local tankSizeScaling = settings.startup["st-wagon-size"].value * settings.startup["st-storage-multiplier"].value
 -------------------------------------------------------------------------------------
 local function makestoragetank(unitSize)
 	-------------------------------------------------------------------------------------
