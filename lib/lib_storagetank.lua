@@ -1,4 +1,5 @@
-﻿local lib_storagetank = {}
+﻿local util = require("util")
+local lib_storagetank = {}
 local myGlobal = require("__nco-LongStorageTanks__/lib/nco_data")
 --=================================================================================--
 function lib_storagetank.getStorageTankData(unitSize,sizeScaling)

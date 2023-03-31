@@ -1,4 +1,5 @@
 --log("storagetanks-entity")
+local util = require("util")
 local myGlobal = require("__nco-LongStorageTanks__/lib/nco_data")
 local data_util = require("__nco-LongStorageTanks__/lib/data_util")
 local lib_storagetank = require("__nco-LongStorageTanks__/lib/lib_storagetank")
