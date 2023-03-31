@@ -1,20 +1,38 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.6
+  Date: 2023-04-01
+  Updated-by:
+    - krissi
+  Changes:
+    - Make container size more configurable
+---------------------------------------------------------------------------------------------------
+Version: 0.2.5
+  Date: 2023-03-25
+  Updated-by:
+    - Crowdin
+  Changes:
+    - Update translations from Crowdin
+---------------------------------------------------------------------------------------------------
 Version: 0.2.4
+  Date: 2022-02-19
   Updated-by:
     - Crowdin
   Changes:
     - Update translations from Crowdin
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
+  Date: 2021-09-11
   Changes:
     - removed superfluous log outputs
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.2
+  Date: 2021-09-10
   Changes:
     - Update translations from Crowdin
     - added locale (pt-BR)
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
+  Date: 2021-07-31
   Major Features:
     - Complete refactoring
     - Split from long warehouse mod into standalone mod
