@@ -8,10 +8,10 @@ myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/storage-tank-v-bg-m
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/storage-tank-v-bg-right.png"]={width=268, height=391}
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/storage-tank-h-building.png"]={width=904, height=392}
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/storage-tank-v-building.png"]={width=423, height=935}
-myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-down.png"]={width=128, height=128}
-myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-left.png"]={width=128, height=128}
-myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-right.png"]={width=128, height=128}
-myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-up.png"]={width=128, height=128}
+myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/pipe-to-ground-down.png"]={width=128, height=128}
+myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/pipe-to-ground-left.png"]={width=128, height=128}
+myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/pipe-to-ground-right.png"]={width=128, height=128}
+myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/pipe-to-ground-up.png"]={width=128, height=128}
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/icons/fluid-handling.png"]={width=480, height=256}
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/icons/long-storage-tank.png"]={width=64, height=64}
 myGlobal.imageInfo["__nco-LongStorageTanks__/graphics/icons/tech-long-storage-tanks.png"]={width=128, height=128}
