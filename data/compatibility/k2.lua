@@ -7,5 +7,5 @@ if mods["Krastorio2"] then
 	end
 	table.insert(whTechFluid.prerequisites, "kr-steel-fluid-handling")
 	whTechFluid.unit.ingredients = data_util.getResearchUnitIngredients("kr-steel-fluid-handling")
-	whTechFluid.unit.count = data_util.getResearchUnitCount("kr-steel-fluid-handling")*2
+	whTechFluid.unit.count = data_util.getResearchUnitCount("kr-steel-fluid-handling") * 2
 end

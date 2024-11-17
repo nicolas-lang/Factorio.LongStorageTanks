@@ -19,4 +19,4 @@ local function script_on_configuration_changed()
 	reload_tech_unlock("nco-LongStorageTanks")
 end
 -------------------------------------------------------------------------------------
-script.on_configuration_changed( script_on_configuration_changed )
+script.on_configuration_changed(script_on_configuration_changed)

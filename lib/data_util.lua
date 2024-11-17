@@ -3,23 +3,26 @@
 function data_util.round(f)
 	return tonumber(math.floor(f + 0.5))
 end
+
 -------------------------------------------------------------------------------------
 function data_util.trim(s)
-	return s:match'^%s*(.*%S)' or ''
+	return s:match '^%s*(.*%S)' or ''
 end
+
 -------------------------------------------------------------------------------------
-function data_util.csv_split (str, separator)
-	local pattern = '([^'.. separator ..']+)'
+function data_util.csv_split(str, separator)
+	local pattern = '([^' .. separator .. ']+)'
 	local result = {}
 	if str then
 		for word in string.gmatch(str, pattern) do
-			table.insert(result,word)
+			table.insert(result, word)
 		end
 	end
 	return result
 end
+
 -------------------------------------------------------------------------------------
-function data_util.has_value (tab, val)
+function data_util.has_value(tab, val)
 	if val == nil then
 		return false
 	end
@@ -33,6 +36,7 @@ function data_util.has_value (tab, val)
 	end
 	return false
 end
+
 -------------------------------------------------------------------------------------
 function data_util.getResearchUnitIngredients(technology_name)
 	local technology = data_util.getTechnologyFromName(technology_name)
@@ -45,6 +49,7 @@ function data_util.getResearchUnitIngredients(technology_name)
 	end
 	return {}
 end
+
 -------------------------------------------------------------------------------------
 function data_util.getTechnologyFromName(technology_name)
 	for name, technology in pairs(data.raw.technology) do
@@ -54,7 +59,9 @@ function data_util.getTechnologyFromName(technology_name)
 	end
 	return nil
 end
--------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+
 function data_util.getResearchUnitCount(technology_name)
 	local technology = data_util.getTechnologyFromName(technology_name)
 	if technology and next(technology) ~= nil then
@@ -66,5 +73,6 @@ function data_util.getResearchUnitCount(technology_name)
 	end
 	return 1
 end
+
 -------------------------------------------------------------------------------------
 return data_util
