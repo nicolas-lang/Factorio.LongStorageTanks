@@ -13,8 +13,6 @@ local function makestoragetank(unitSize)
 	local storageTankData = lib_storagetank.getStorageTankData(unitSize, tankSizeScaling)
 	local storageTankSizeA = storageTankData.gridSize
 	local storageTankSizeB = 1.98
-	local fluid_h = 1
-	local fluid_base_area = storageTankData.storageTankCapacity / fluid_h / 100
 	log("registering storagetank " .. storageTankData.storageTankName)
 	table.insert(myGlobal["RegisteredStorageTanks"], { name = storageTankData.storageTankName })
 	--===================================================================================
@@ -24,9 +22,11 @@ local function makestoragetank(unitSize)
 		type = "recipe",
 		name = storageTankData.storageTankName,
 		energy_required = 20,
-		enabled = "false",
+		enabled = false,
 		ingredients = lib_storagetank.getStorageTankIngredients(unitSize),
-		result = storageTankData.storageTankName,
+		results = {
+			{ type = "item", name = storageTankData.storageTankName, amount = 1 },
+		},
 		icons = lib_storagetank.getStorageTankIcon(unitSize),
 		subgroup = "cust-storage-tank",
 		order = storageTankData.sortOrder,
@@ -63,9 +63,7 @@ local function makestoragetank(unitSize)
 		icons = lib_storagetank.getStorageTankIcon(unitSize),
 		max_health = 500,
 		fluid_box = {
-			base_area = fluid_base_area,
-			height = fluid_h,
-			base_level = 0,
+			volume = storageTankData.storageTankCapacity,
 			pipe_connections = {},
 			pipe_covers = pipecoverspictures(),
 		},
@@ -103,21 +101,40 @@ local function makestoragetank(unitSize)
 	--===================================================================================
 	-- FluidBox:Pipes
 	--===================================================================================
-	local pipeConnection
 	for i = 0, (unitSize - 1) do
 		for x = 0, 2 do
-			pipeConnection = { position = { data_util.round((-storageTankSizeA / 2) + (i * 7) + (2 * x)), data_util.round(storageTankSizeB / 2) + 0.5 } }
-			table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
-			pipeConnection = { position = { data_util.round((-storageTankSizeA / 2) + (i * 7) + (2 * x) + 1), -data_util.round(storageTankSizeB / 2) - 0.5 } }
-			table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
+			table.insert(storageTankEnt.fluid_box.pipe_connections, {
+				position = {
+					x = data_util.round((-storageTankSizeA / 2) + (i * 7) + (2 * x)),
+					y = (data_util.round(storageTankSizeB / 2) - 0.49)
+				},
+				direction = 8 --South
+			})
+			table.insert(storageTankEnt.fluid_box.pipe_connections, {
+				position = {
+					x = data_util.round((-storageTankSizeA / 2) + (i * 7) + (2 * x) + 1),
+					y = -(data_util.round(storageTankSizeB / 2) - 0.49)
+				},
+				direction = 0 --North
+			})
 		end
 	end
 
 	--side connections
-	pipeConnection = { position = { -data_util.round(storageTankSizeA) / 2 - 0.5, -data_util.round(storageTankSizeB) / 4 } }
-	table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
-	pipeConnection = { position = { data_util.round(storageTankSizeA) / 2 + 0.5, data_util.round(storageTankSizeB) / 4 } }
-	table.insert(storageTankEnt.fluid_box.pipe_connections, pipeConnection)
+	table.insert(storageTankEnt.fluid_box.pipe_connections, {
+		position = {
+			x = -(data_util.round(storageTankSizeA) / 2 - 0.49),
+			y = -(data_util.round(storageTankSizeB) / 4)
+		},
+		direction = 12 --West
+	})
+	table.insert(storageTankEnt.fluid_box.pipe_connections, {
+		position = {
+			x = (data_util.round(storageTankSizeA) / 2 -0.49),
+			y = (data_util.round(storageTankSizeB) / 4)
+		},
+		direction = 4 --East
+	})
 
 	--===================================================================================
 	--Register storagetank

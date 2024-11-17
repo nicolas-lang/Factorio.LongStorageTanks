@@ -33,7 +33,7 @@ end
 function lib_storagetank.getStorageTankIcon(unitSize)
 	local storageTankIconImage = "__nco-LongStorageTanks__/graphics/icons/long-storage-tank.png"
 	local storageTankIconImageSize = "__nco-LongStorageTanks__/graphics/icons/Numbers/icon_" ..
-	tostring(unitSize) .. ".png"
+		tostring(unitSize) .. ".png"
 	local Icons = {
 		{
 			icon = storageTankIconImage,
@@ -65,7 +65,7 @@ end
 function lib_storagetank.getTankparent(unitSize)
 	local parentSize = lib_storagetank.getParentSize(unitSize)
 	if parentSize > 0 then
-		return lib_storagetank.getStorageTankData(parentSize, 0, "proxy")
+		return lib_storagetank.getStorageTankData(parentSize, 0)
 	end
 end
 
@@ -76,7 +76,7 @@ function lib_storagetank.getStorageTankIngredients(unitSize)
 	local ingredients = {}
 	local storageTankParent = lib_storagetank.getTankparent(unitSize)
 	if storageTankParent then
-		table.insert(ingredients, { storageTankParent.storageTankName, 1 })
+		table.insert(ingredients, { type = "item", name = storageTankParent.storageTankName, amount = 1 })
 		resourceScore = resourceScore / 2
 	end
 	local resourceCount = math.min(5, unitSize)
@@ -107,7 +107,7 @@ function lib_storagetank.getStorageTankIngredientsByScore(resourceScore, resourc
 			if cnt > 0 and i < maxcount then
 				i = i + 1
 				resourceScore = resourceScore - res.val * cnt
-				table.insert(ingredients, { res.name, cnt })
+				table.insert(ingredients, { type = "item", name = res.name, amount = cnt })
 			end
 		end
 	end
@@ -116,8 +116,8 @@ end
 
 --=================================================================================--
 function lib_storagetank.buildSpriteLayer(unitSize, direction)
-	local imageFile, imageFileHr, shft
-	local entityData = lib_storagetank.getStorageTankData(unitSize, 0, direction)
+	local imageFile, shft
+	local entityData = lib_storagetank.getStorageTankData(unitSize, 0)
 	local layers = {}
 	local bgTint = { r = 0.1, g = 0.1, b = 0.1, a = 0.8 }
 
@@ -186,7 +186,6 @@ function lib_storagetank.buildSpriteLayer(unitSize, direction)
 	--pipes
 	-------------------------------------------------------------------------------------
 	imageFile = "__nco-LongStorageTanks__/graphics/entity/storage-tank-" .. direction .. "-building.png"
-	imageFileHr = "__nco-LongStorageTanks__/graphics/entity/hr/storage-tank-" .. direction .. "-building.png"
 	for i = 1, unitSize do
 		shft = {
 			-(32 * entityData.gridSize / 2) + (32 * 6 / 2 + 5) + ((i - 1) * 32 * 7) - 5,
@@ -200,14 +199,7 @@ function lib_storagetank.buildSpriteLayer(unitSize, direction)
 			width = myGlobal.imageInfo[imageFile].width,
 			height = myGlobal.imageInfo[imageFile].height,
 			shift = util.by_pixel(shft[1], shft[2]),
-			scale = 1,
-			hr_version = {
-				filename = imageFileHr,
-				width = myGlobal.imageInfo[imageFileHr].width,
-				height = myGlobal.imageInfo[imageFileHr].height,
-				shift = util.by_pixel(shft[1], shft[2]),
-				scale = 0.25,
-			}
+			scale = 0.25,
 		})
 	end
 	-------------------------------------------------------------------------------------
@@ -229,20 +221,12 @@ function lib_storagetank.buildSpriteLayer(unitSize, direction)
 			shft = { -shft[2], shft[1] }
 		end
 		imageFile = "__nco-LongStorageTanks__/graphics/entity/pipe-to-ground/pipe-to-ground-" .. pd .. ".png"
-		imageFileHr = "__nco-LongStorageTanks__/graphics/entity/hr/pipe-to-ground/hr-pipe-to-ground-" .. pd .. ".png"
 		table.insert(layers, {
 			filename = imageFile,
 			width = myGlobal.imageInfo[imageFile].width,
 			height = myGlobal.imageInfo[imageFile].height,
 			shift = util.by_pixel(shft[1], shft[2]),
-			scale = 1,
-			hr_version = {
-				filename = imageFileHr,
-				width = myGlobal.imageInfo[imageFileHr].width,
-				height = myGlobal.imageInfo[imageFileHr].height,
-				shift = util.by_pixel(shft[1], shft[2]),
-				scale = 0.5
-			}
+			scale = 0.5
 		})
 	end
 	--log(serpent.block( layers, {comment = false, numformat = '%1.8g', compact = true } ))
